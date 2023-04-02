@@ -52,3 +52,15 @@ func _on_dialog_display_timer_timeout() -> void:
 		update_dialog_box()
 		_char_index += 1
 		_dialog_display_timer.start()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventKey:
+		var key_event := event as InputEventKey
+		if key_event.keycode == KEY_SPACE:
+			force_show_full_dialog()
+
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton:
+		var mouse_event := event as InputEventMouseButton
+		if mouse_event.button_index == MOUSE_BUTTON_LEFT:
+			force_show_full_dialog()

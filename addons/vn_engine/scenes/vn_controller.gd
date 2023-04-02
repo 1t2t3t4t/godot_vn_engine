@@ -23,9 +23,3 @@ func _ready() -> void:
 	current_scene = initial_scene
 	var scn := current_scene.flows[0] as VNDialog
 	vn_player.show_dialog("Test speaker", scn.dialog)
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventKey:
-		var key_event := event as InputEventKey
-		if key_event.keycode == KEY_SPACE:
-			vn_player.force_show_full_dialog()
