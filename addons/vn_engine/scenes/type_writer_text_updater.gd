@@ -7,8 +7,8 @@ signal text_update(new_text: String)
 @onready var _dialog_display_timer: Timer = $DialogDisplayTimer
 
 var _target_text: String
-
 var _char_index: int
+
 var _current_text: String:
 	set(new_text):
 		_current_text = new_text

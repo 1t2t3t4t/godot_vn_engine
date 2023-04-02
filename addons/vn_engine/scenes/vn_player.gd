@@ -15,6 +15,7 @@ func show_dialog(speaker: String, text: String) -> void:
 	speaker_label.text = speaker
 	type_writer_text_updater.start(text)
 
+# Signal from TypeWriterTextUpdater
 func _on_text_update(new_text) -> void:
 	dialog_text.text = new_text
 
