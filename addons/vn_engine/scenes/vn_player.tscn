@@ -51,3 +51,9 @@ layout_mode = 2
 [node name="Button" type="Button" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
 text = "Save"
+
+[node name="DialogDisplayTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="DialogDisplayTimer" to="." method="_on_dialog_display_timer_timeout"]
