@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bxssf8kaki3o2"]
+
+[ext_resource type="Script" path="res://addons/vn_engine/scenes/vn_controller.gd" id="1_qc08f"]
+
+[node name="VNController" type="Node"]
+script = ExtResource("1_qc08f")
