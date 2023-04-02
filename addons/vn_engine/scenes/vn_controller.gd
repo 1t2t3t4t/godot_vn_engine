@@ -18,7 +18,7 @@ var current_scene: VNScene:
 		current_scene = new_scene
 
 func _ready() -> void:
-	vn_player.config(config)
+	vn_player.config = config
 	add_child(vn_player)
 	current_scene = initial_scene
 	var scn := current_scene.flows[0] as VNDialog
