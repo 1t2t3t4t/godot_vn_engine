@@ -1,0 +1,10 @@
+[gd_scene load_steps=4 format=3 uid="uid://bxssf8kaki3o2"]
+
+[ext_resource type="Script" path="res://addons/vn_engine/nodes/vn_controller.gd" id="1_pwncn"]
+[ext_resource type="PackedScene" uid="uid://dficdk1ga18re" path="res://addons/vn_engine/nodes/vn_player.tscn" id="2_bjk2c"]
+[ext_resource type="Resource" uid="uid://uiol5uv41dfk" path="res://default_config.tres" id="3_gihj6"]
+
+[node name="VNController" type="Node"]
+script = ExtResource("1_pwncn")
+vn_player_scn = ExtResource("2_bjk2c")
+config = ExtResource("3_gihj6")
