@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="VNConfig" load_steps=2 format=3 uid="uid://uiol5uv41dfk"]
+
+[ext_resource type="Script" path="res://addons/vn_engine/resources/vn_config.gd" id="1_s1ej8"]
+
+[resource]
+script = ExtResource("1_s1ej8")
+char_delay = 25

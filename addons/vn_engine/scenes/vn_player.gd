@@ -3,9 +3,6 @@ extends Control
 class_name VNPlayer
 
 @export_category("Dialog Config")
-## Character delay when displaying in millisec
-@export_range(0, 300, 1, "or_greater", "suffix") var char_delay: int = 25
-
 @onready var speaker_label: Label = $VBoxContainer/SpeakerLabel
 @onready var dialog_text: RichTextLabel = $VBoxContainer/DialogBox/MarginContainer/DialogText
 
@@ -16,11 +13,17 @@ var _original_text: String
 var _char_index: int
 var _current_text: String
 
+## Character delay when displaying in millisec
+var _char_delay: int = 25
+
+func config(vn_config: VNConfig) -> void:
+	_char_delay = vn_config.char_delay
+
 func _ready() -> void:
 	# Ensure timer
 	_dialog_display_timer.one_shot = true
 	_dialog_display_timer.autostart = false
-	_dialog_display_timer.wait_time = float(char_delay) / 1000
+	_dialog_display_timer.wait_time = float(_char_delay) / 1000
 
 func show_dialog(speaker: String, text: String) -> void:
 	speaker_label.text = speaker
