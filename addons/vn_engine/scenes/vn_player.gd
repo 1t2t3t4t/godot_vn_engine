@@ -4,8 +4,8 @@ class_name VNPlayer
 
 signal flow_completed
 
-@onready var speaker_label: Label = $VBoxContainer/SpeakerLabel
-@onready var dialog_text: RichTextLabel = $VBoxContainer/DialogBox/MarginContainer/DialogText
+@onready var dialog_text: RichTextLabel = $MarginContainer/VBoxContainer/DialogBox/MarginContainer/DialogText
+@onready var speaker_label: Label = $MarginContainer/VBoxContainer/SpeakerLabel
 
 @onready var dialog_handler := $Handlers/DialogHandler as DialogHandler
 

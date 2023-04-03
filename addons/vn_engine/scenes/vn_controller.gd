@@ -14,7 +14,7 @@ class_name VNController
 @export_category("State")
 @export var initial_scene: VNScene
 
-@onready var vn_player: VNPlayer = vn_player_scn.instantiate() as VNPlayer
+@onready var vn_player := vn_player_scn.instantiate() as VNPlayer
 
 var current_scene: VNScene:
 	set(new_scene):
