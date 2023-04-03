@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://0vxu8eov28hm"]
+[gd_scene load_steps=2 format=3 uid="uid://dd1ignopne60l"]
 
-[ext_resource type="Script" path="res://addons/vn_engine/nodes/type_writer_text_updater.gd" id="1_4q5vp"]
+[ext_resource type="Script" path="res://addons/vn_engine/scenes/type_writer_text_updater.gd" id="1_4q5vp"]
 
 [node name="TypeWriterTextUpdater" type="Node"]
 script = ExtResource("1_4q5vp")
