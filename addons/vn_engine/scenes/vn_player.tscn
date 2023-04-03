@@ -55,4 +55,5 @@ text = "Save"
 
 [node name="TypeWriterTextUpdater" parent="." instance=ExtResource("2_d0n4d")]
 
+[connection signal="completed" from="TypeWriterTextUpdater" to="." method="_on_completed"]
 [connection signal="text_update" from="TypeWriterTextUpdater" to="." method="_on_text_update"]

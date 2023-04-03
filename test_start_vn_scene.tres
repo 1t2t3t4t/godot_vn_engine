@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="VNScene" load_steps=4 format=3 uid="uid://yve56q7kue2h"]
+
+[ext_resource type="Script" path="res://addons/vn_engine/resources/vn_dialog.gd" id="1_n4p86"]
+[ext_resource type="Script" path="res://addons/vn_engine/resources/vn_scene.gd" id="2_27xpr"]
+
+[sub_resource type="Resource" id="Resource_4g6x0"]
+script = ExtResource("1_n4p86")
+dialog = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
+actor = "Mr. Anon"
+id = &"1"
+
+[resource]
+script = ExtResource("2_27xpr")
+id = &"test_start"
+flows = Array[Resource("res://addons/vn_engine/resources/vn_flow.gd")]([SubResource("Resource_4g6x0")])

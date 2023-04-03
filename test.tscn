@@ -1,22 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cn5ek0jdn0kj5"]
+[gd_scene load_steps=5 format=3 uid="uid://cn5ek0jdn0kj5"]
 
+[ext_resource type="Script" path="res://test.gd" id="1_a4fhr"]
 [ext_resource type="PackedScene" uid="uid://bxssf8kaki3o2" path="res://addons/vn_engine/scenes/vn_controller.tscn" id="1_cwt3o"]
-[ext_resource type="Script" path="res://addons/vn_engine/resources/vn_scene.gd" id="2_26v04"]
-[ext_resource type="Script" path="res://addons/vn_engine/resources/vn_dialog.gd" id="2_a76ra"]
 [ext_resource type="Resource" uid="uid://uiol5uv41dfk" path="res://default_config.tres" id="2_ehv42"]
+[ext_resource type="Resource" uid="uid://yve56q7kue2h" path="res://test_start_vn_scene.tres" id="4_02exe"]
 
-[sub_resource type="Resource" id="Resource_qhs1r"]
-script = ExtResource("2_a76ra")
-dialog = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like)."
-id = &"1"
-
-[sub_resource type="Resource" id="Resource_lj3xk"]
-script = ExtResource("2_26v04")
-id = &"test"
-flows = Array[Resource("res://addons/vn_engine/resources/vn_flow.gd")]([SubResource("Resource_qhs1r")])
-
-[node name="Node2D" type="Node2D"]
+[node name="TestScene" type="Node2D"]
+script = ExtResource("1_a4fhr")
 
 [node name="VNController" parent="." instance=ExtResource("1_cwt3o")]
 config = ExtResource("2_ehv42")
-initial_scene = SubResource("Resource_lj3xk")
+initial_scene = ExtResource("4_02exe")

@@ -3,6 +3,7 @@ extends Node
 class_name TypeWriterTextUpdater
 
 signal text_update(new_text: String)
+signal completed
 
 @onready var _dialog_display_timer: Timer = $DialogDisplayTimer
 
@@ -13,6 +14,8 @@ var _current_text: String:
 	set(new_text):
 		_current_text = new_text
 		text_update.emit(new_text)
+		if _current_text == _target_text:
+			completed.emit()
 
 ## Character delay when displaying in millisec
 var char_delay: int = 25

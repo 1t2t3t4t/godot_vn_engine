@@ -21,15 +21,24 @@ var current_scene: VNScene:
 		print("Transition scene to %s" % new_scene.id)
 		current_scene = new_scene
 
-func _ready() -> void:
-	vn_player.config = config
-	add_child(vn_player)
-	current_scene = initial_scene
-	var scn := current_scene.flows[0] as VNDialog
-	vn_player.show_dialog("Test speaker", scn.dialog)
-
 func _get_configuration_warnings() -> PackedStringArray:
 	var result: Array[String] = []
 	if config == null:
 		result.append("VNConfig is empty")
 	return PackedStringArray(result)
+
+func _ready() -> void:
+	vn_player.config = config
+	add_child(vn_player)
+
+func start(new_scene: VNScene = null) -> void:
+	current_scene = new_scene if not new_scene == null else initial_scene
+	vn_player.show_flow(current_scene.flows[0])
+
+func _start_current_flows() -> void:
+	var flows := current_scene.flows
+	var idx := 0
+	while idx < len(flows):
+		vn_player.show_flow(flows[idx])
+		await vn_player.flow_completed
+		idx += 1
