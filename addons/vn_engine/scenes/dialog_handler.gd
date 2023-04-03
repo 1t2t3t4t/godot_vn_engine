@@ -6,8 +6,16 @@ class_name DialogHandler
 
 var _ready_next_flow := false
 
-func _config(vn_config: VNConfig) ->void:
+func _config(vn_config: VNConfig) -> void:
+	super(vn_config)
 	type_writer_text_updater.char_delay = vn_config.char_delay
+
+
+func _handle_process_next() -> void:
+	if not _ready_next_flow:
+		type_writer_text_updater.stop()
+	else:
+		handler_completed.emit()
 
 
 func show_flow(dialog: VNDialog) -> void:
@@ -23,9 +31,3 @@ func _on_text_update(new_text) -> void:
 func _on_completed() -> void:
 	_ready_next_flow = true
 
-
-func handle_process_next() -> void:
-	if not _ready_next_flow:
-		type_writer_text_updater.stop()
-	else:
-		handler_completed.emit()

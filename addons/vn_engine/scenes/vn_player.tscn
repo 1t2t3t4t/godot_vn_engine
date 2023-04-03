@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dficdk1ga18re"]
 
 [ext_resource type="Script" path="res://addons/vn_engine/scenes/vn_player.gd" id="1_tq3hm"]
-[ext_resource type="PackedScene" path="res://addons/vn_engine/scenes/dialog_handler.tscn" id="3_v0mo4"]
+[ext_resource type="PackedScene" uid="uid://6qxmijmlobbm" path="res://addons/vn_engine/scenes/dialog_handler.tscn" id="3_v0mo4"]
 
 [node name="VNPlayer" type="Control"]
 layout_mode = 3

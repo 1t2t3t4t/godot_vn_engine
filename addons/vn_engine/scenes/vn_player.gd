@@ -36,7 +36,7 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _setup_handler(handler: VNHandler) -> void:
-	handler.config(config)
+	handler._config(config)
 	handler.text_updated.connect(_text_updated)
 	handler.handler_completed.connect(_complete_flow)
 
@@ -55,7 +55,7 @@ func show_flow(flow: VNFlow) -> void:
 
 
 func _handle_process_next() -> void:
-	_current_handler.handle_process_next()
+	_current_handler._handle_process_next()
 
 
 func _complete_flow() -> void:

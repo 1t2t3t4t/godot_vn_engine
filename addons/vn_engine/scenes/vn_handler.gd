@@ -5,8 +5,11 @@ class_name VNHandler
 signal text_updated(new_text: String)
 signal handler_completed
 
-func config(vn_config: VNConfig) ->void:
-	pass
+var current_config: VNConfig
 
-func handle_process_next() -> void:
+func _config(vn_config: VNConfig) ->void:
+	current_config = vn_config
+
+
+func _handle_process_next() -> void:
 	pass

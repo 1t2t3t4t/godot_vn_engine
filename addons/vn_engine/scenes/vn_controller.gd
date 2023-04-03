@@ -21,19 +21,23 @@ var current_scene: VNScene:
 		print("Transition scene to %s" % new_scene.id)
 		current_scene = new_scene
 
+
 func _get_configuration_warnings() -> PackedStringArray:
 	var result: Array[String] = []
 	if config == null:
 		result.append("VNConfig is empty")
 	return PackedStringArray(result)
 
+
 func _ready() -> void:
 	vn_player.config = config
 	add_child(vn_player)
 
+
 func start(new_scene: VNScene = null) -> void:
 	current_scene = new_scene if not new_scene == null else initial_scene
 	_start_current_flows()
+
 
 func _start_current_flows() -> void:
 	var flows := current_scene.flows
