@@ -5,7 +5,7 @@ class_name VNHandler
 signal text_updated(new_text: String)
 signal handler_completed
 
-signal choices_updated(choices: Array[String])
+signal choices_updated(choices: Array[VNChoice])
 signal choice_selected
 
 var current_config: VNConfig

@@ -42,6 +42,7 @@ func _setup_handler(handler: VNHandler) -> void:
 	handler.config(config)
 	handler.text_updated.connect(_text_updated)
 	handler.handler_completed.connect(_complete_flow)
+	handler.choices_updated.connect(_choices_updated)
 
 
 func show_flow(flow: VNFlow) -> void:
@@ -51,12 +52,12 @@ func show_flow(flow: VNFlow) -> void:
 			_current_actor = flow.actor
 			speaker_label.text = _current_actor
 
-	if flow is VNDialog:
-		_current_handler = dialog_handler
-		dialog_handler.handle(flow)
-	elif flow is VNPickChoice:
+	if flow is VNPickChoice:
 		_current_handler = pick_choice_handler
 		pick_choice_handler.handle(flow)
+	elif flow is VNDialog:
+		_current_handler = dialog_handler
+		dialog_handler.handle(flow)
 	else:
 		assert(false, "Unhandled flow %s" % flow.id)
 
@@ -72,6 +73,13 @@ func _complete_flow() -> void:
 
 func _text_updated(new_text: String) -> void:
 	dialog_text.text = new_text
+
+
+func _choices_updated(choices: Array[VNChoice]) -> void:
+	for choice in choices:
+		var button := VNChoiceButton.new()
+		button.metadata = VNChoiceButton.Metadata.new(choice)
+		choices_container.add_child(button)
 
 ## Handler Signal
 

@@ -2,7 +2,10 @@ extends Button
 
 class_name VNChoiceButton
 
-var metadata: Metadata
+var metadata: Metadata:
+	set(new_metadata):
+		metadata = new_metadata
+		text = new_metadata.choice.text
 
 class Metadata:
 	var choice: VNChoice
