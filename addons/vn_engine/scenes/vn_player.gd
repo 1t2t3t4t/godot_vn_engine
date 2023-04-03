@@ -6,39 +6,18 @@ signal flow_completed
 
 @onready var speaker_label: Label = $VBoxContainer/SpeakerLabel
 @onready var dialog_text: RichTextLabel = $VBoxContainer/DialogBox/MarginContainer/DialogText
-@onready var type_writer_text_updater: TypeWriterTextUpdater = $TypeWriterTextUpdater as TypeWriterTextUpdater
+
+@onready var dialog_handler := $Handlers/DialogHandler as DialogHandler
 
 var config: VNConfig
 
 var _current_flow: VNFlow
-var _ready_next_flow := false
 var _current_actor: String
 
+var _current_handler: VNHandler
+
 func _ready() -> void:
-	type_writer_text_updater.char_delay = config.char_delay
-
-
-func show_flow(flow: VNFlow) -> void:
-	_current_flow = flow
-	_ready_next_flow = false
-	if _current_actor != flow.actor and not flow.actor.is_empty():
-			_current_actor = flow.actor
-
-	if flow is VNDialog:
-		var dialog := flow as VNDialog
-		speaker_label.text = _current_actor
-		type_writer_text_updater.start(dialog.dialog)
-	else:
-		assert(false, "Unhandled flow %s" % flow.id)
-
-
-# Signal from TypeWriterTextUpdater
-func _on_text_update(new_text) -> void:
-	dialog_text.text = new_text
-
-
-func _on_completed() -> void:
-	_ready_next_flow = true
+	_setup_handler(dialog_handler)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -56,12 +35,32 @@ func _gui_input(event: InputEvent) -> void:
 			_handle_process_next()
 
 
-func _handle_process_next() -> void:
-	if not _ready_next_flow:
-		type_writer_text_updater.stop()
+func _setup_handler(handler: VNHandler) -> void:
+	handler.config(config)
+	handler.text_updated.connect(_text_updated)
+	handler.handler_completed.connect(_complete_flow)
+
+
+func show_flow(flow: VNFlow) -> void:
+	_current_flow = flow
+	if _current_actor != flow.actor and not flow.actor.is_empty():
+			_current_actor = flow.actor
+			speaker_label.text = _current_actor
+
+	if flow is VNDialog:
+		_current_handler = dialog_handler
+		dialog_handler.show_flow(flow)
 	else:
-		_complete_flow()
+		assert(false, "Unhandled flow %s" % flow.id)
+
+
+func _handle_process_next() -> void:
+	_current_handler.handle_process_next()
 
 
 func _complete_flow() -> void:
 	flow_completed.emit()
+
+
+func _text_updated(new_text: String) -> void:
+	dialog_text.text = new_text

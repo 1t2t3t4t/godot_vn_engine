@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dficdk1ga18re"]
 
 [ext_resource type="Script" path="res://addons/vn_engine/scenes/vn_player.gd" id="1_tq3hm"]
-[ext_resource type="PackedScene" uid="uid://dd1ignopne60l" path="res://addons/vn_engine/scenes/type_writer_text_updater.tscn" id="2_d0n4d"]
+[ext_resource type="PackedScene" path="res://addons/vn_engine/scenes/dialog_handler.tscn" id="3_v0mo4"]
 
 [node name="VNPlayer" type="Control"]
 layout_mode = 3
@@ -53,7 +53,6 @@ layout_mode = 2
 layout_mode = 2
 text = "Save"
 
-[node name="TypeWriterTextUpdater" parent="." instance=ExtResource("2_d0n4d")]
+[node name="Handlers" type="Node" parent="."]
 
-[connection signal="completed" from="TypeWriterTextUpdater" to="." method="_on_completed"]
-[connection signal="text_update" from="TypeWriterTextUpdater" to="." method="_on_text_update"]
+[node name="DialogHandler" parent="Handlers" instance=ExtResource("3_v0mo4")]

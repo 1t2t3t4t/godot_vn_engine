@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://6qxmijmlobbm"]
+
+[ext_resource type="Script" path="res://addons/vn_engine/scenes/dialog_handler.gd" id="1_snjdq"]
+[ext_resource type="PackedScene" uid="uid://dd1ignopne60l" path="res://addons/vn_engine/scenes/type_writer_text_updater.tscn" id="2_jvlsc"]
+
+[node name="DialogHandler" type="Node"]
+script = ExtResource("1_snjdq")
+
+[node name="TypeWriterTextUpdater" parent="." instance=ExtResource("2_jvlsc")]
+
+[connection signal="completed" from="TypeWriterTextUpdater" to="." method="_on_completed"]
+[connection signal="text_update" from="TypeWriterTextUpdater" to="." method="_on_text_update"]
