@@ -12,6 +12,7 @@ var config: VNConfig
 
 var _current_flow: VNFlow
 var _ready_next_flow := false
+var _current_actor: String
 
 func _ready() -> void:
 	type_writer_text_updater.char_delay = config.char_delay
@@ -20,9 +21,12 @@ func _ready() -> void:
 func show_flow(flow: VNFlow) -> void:
 	_current_flow = flow
 	_ready_next_flow = false
+	if _current_actor != flow.actor and not flow.actor.is_empty():
+			_current_actor = flow.actor
+
 	if flow is VNDialog:
 		var dialog := flow as VNDialog
-		speaker_label.text = dialog.actor
+		speaker_label.text = _current_actor
 		type_writer_text_updater.start(dialog.dialog)
 	else:
 		assert(false, "Unhandled flow %s" % flow.id)
@@ -47,7 +51,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		var mouse_event := event as InputEventMouseButton
-		if mouse_event.button_index == MOUSE_BUTTON_LEFT:
+		if mouse_event.is_pressed() && \
+			mouse_event.button_index == MOUSE_BUTTON_LEFT:
 			_handle_process_next()
 
 

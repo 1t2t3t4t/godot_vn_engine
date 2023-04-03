@@ -33,12 +33,13 @@ func _ready() -> void:
 
 func start(new_scene: VNScene = null) -> void:
 	current_scene = new_scene if not new_scene == null else initial_scene
-	vn_player.show_flow(current_scene.flows[0])
+	_start_current_flows()
 
 func _start_current_flows() -> void:
 	var flows := current_scene.flows
 	var idx := 0
 	while idx < len(flows):
-		vn_player.show_flow(flows[idx])
+		var flow := flows[idx].duplicate()
+		vn_player.show_flow(flow)
 		await vn_player.flow_completed
 		idx += 1

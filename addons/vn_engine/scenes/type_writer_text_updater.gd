@@ -27,6 +27,7 @@ func _ready() -> void:
 	_dialog_display_timer.wait_time = float(char_delay) / 1000
 	_dialog_display_timer.timeout.connect(_on_dialog_display_timer_timeout)
 
+
 func _on_dialog_display_timer_timeout() -> void:
 	if _current_text != _target_text:
 		var next_char := _target_text.substr(_char_index, 1)
@@ -34,10 +35,17 @@ func _on_dialog_display_timer_timeout() -> void:
 		_char_index += 1
 		_dialog_display_timer.start()
 
+
+func _reset_state() -> void:
+	_current_text = ""
+	_char_index = 0
+
+
 func start(text: String) -> void:
 	_target_text = text
-	_current_text = ""
+	_reset_state()
 	_dialog_display_timer.start()
+
 
 ## Stop timer and set text to be target text
 func stop() -> void:
