@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="VNScene" load_steps=5 format=3 uid="uid://yve56q7kue2h"]
+[gd_resource type="Resource" script_class="VNScene" load_steps=10 format=3 uid="uid://yve56q7kue2h"]
 
 [ext_resource type="Script" path="res://addons/vn_engine/resources/vn_dialog.gd" id="1_n4p86"]
+[ext_resource type="Script" path="res://addons/vn_engine/resources/vn_pick_choice.gd" id="2_4gucx"]
 [ext_resource type="Script" path="res://addons/vn_engine/resources/vn_scene.gd" id="2_27xpr"]
+[ext_resource type="Script" path="res://addons/vn_engine/resources/choice/vn_choice.gd" id="2_dms7y"]
 
 [sub_resource type="Resource" id="Resource_4g6x0"]
 script = ExtResource("1_n4p86")
@@ -15,7 +17,26 @@ dialog = "I don't know what you want but thanks"
 actor = ""
 id = &""
 
+[sub_resource type="Resource" id="Resource_f76p6"]
+script = ExtResource("2_dms7y")
+id = &"1"
+text = "test choice 1"
+jump_to = -1
+
+[sub_resource type="Resource" id="Resource_25ul3"]
+script = ExtResource("2_dms7y")
+id = &"2"
+text = "test choice 2"
+jump_to = -1
+
+[sub_resource type="Resource" id="Resource_ufjlq"]
+script = ExtResource("2_4gucx")
+choices = Array[ExtResource("2_dms7y")]([SubResource("Resource_f76p6"), SubResource("Resource_25ul3")])
+dialog = "Hey, can't you just say something?"
+actor = ""
+id = &"pick_choice"
+
 [resource]
 script = ExtResource("2_27xpr")
 id = &"test_start"
-flows = Array[Resource("res://addons/vn_engine/resources/vn_flow.gd")]([SubResource("Resource_4g6x0"), SubResource("Resource_uqqek")])
+flows = Array[Resource("res://addons/vn_engine/resources/vn_flow.gd")]([SubResource("Resource_4g6x0"), SubResource("Resource_uqqek"), SubResource("Resource_ufjlq")])

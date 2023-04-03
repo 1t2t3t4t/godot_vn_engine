@@ -10,7 +10,7 @@ signal choice_selected
 
 var current_config: VNConfig
 
-func _config(vn_config: VNConfig) ->void:
+func config(vn_config: VNConfig) -> void:
 	current_config = vn_config
 
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dficdk1ga18re"]
+[gd_scene load_steps=4 format=3 uid="uid://dficdk1ga18re"]
 
 [ext_resource type="Script" path="res://addons/vn_engine/scenes/vn_player.gd" id="1_tq3hm"]
+[ext_resource type="PackedScene" uid="uid://132td3bykm01" path="res://addons/vn_engine/scenes/pick_choice_handler.tscn" id="3_7tsex"]
 [ext_resource type="PackedScene" uid="uid://6qxmijmlobbm" path="res://addons/vn_engine/scenes/dialog_handler.tscn" id="3_v0mo4"]
 
 [node name="VNPlayer" type="Control"]
@@ -71,13 +72,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ChoicesScrollPanel/MarginContainer"]
+[node name="ChoicesContainer" type="VBoxContainer" parent="ChoicesScrollPanel/MarginContainer"]
 layout_mode = 2
 
-[node name="Button" type="Button" parent="ChoicesScrollPanel/MarginContainer/VBoxContainer"]
+[node name="Button" type="Button" parent="ChoicesScrollPanel/MarginContainer/ChoicesContainer"]
 layout_mode = 2
 text = "Test Choice"
 
 [node name="Handlers" type="Node" parent="."]
 
 [node name="DialogHandler" parent="Handlers" instance=ExtResource("3_v0mo4")]
+
+[node name="PickChoiceHandler" parent="Handlers" instance=ExtResource("3_7tsex")]
