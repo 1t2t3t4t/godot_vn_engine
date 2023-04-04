@@ -40,10 +40,18 @@ func start(new_scene: VNScene = null) -> void:
 
 
 func _start_current_flows() -> void:
-	var flows := current_scene.flows
+	var flows: Array[VNFlow] = current_scene.flows
+	_validate_scene(current_scene)
 	var idx := 0
 	while idx < len(flows):
-		var flow := flows[idx].duplicate()
+		var flow := flows[idx]
 		vn_player.show_flow(flow)
 		await vn_player.flow_completed
 		idx += 1
+
+
+func _validate_scene(scene: VNScene) -> void:
+	for i in range(len(scene.flows)):
+		var flow := scene.flows[i]
+		if flow.id.is_empty():
+			printerr("Flow from scene %s at index %s has empty id" % [scene.id, i])

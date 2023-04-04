@@ -9,7 +9,7 @@
 script = ExtResource("1_n4p86")
 dialog = "Hello this is me"
 actor = "Mr. Anon"
-id = &"1"
+id = &"starter"
 
 [sub_resource type="Resource" id="Resource_uqqek"]
 script = ExtResource("1_n4p86")

@@ -44,6 +44,7 @@ func _setup_handler(handler: VNHandler) -> void:
 
 
 func show_flow(flow: VNFlow) -> void:
+	print("Playing flow %s" % flow.id)
 	_current_flow = flow
 	_clear_ui()
 	if _current_actor != flow.actor and not flow.actor.is_empty():
@@ -71,12 +72,16 @@ func _text_updated(new_text: String) -> void:
 
 func _choices_updated(choices: Array[VNChoice]) -> void:
 	for choice in choices:
-		var button := VNChoiceButton.new()
-		button.metadata = VNChoiceButton.Metadata.new(choice)
-		choices_container.add_child(button)
-		pick_choice_handler.button_added(button)
+		_append_choice(choice)
 
-## Handler Signal
+
+## UI
+
+func _append_choice(choice: VNChoice) -> void:
+	var button := VNChoiceButton.new()
+	button.metadata = VNChoiceButton.Metadata.new(choice)
+	choices_container.add_child(button)
+	pick_choice_handler.button_added(button)
 
 func _clear_ui() -> void:
 	for child in choices_container.get_children():
