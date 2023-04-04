@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://132td3bykm01"]
+[gd_scene load_steps=2 format=3 uid="uid://132td3bykm01"]
 
-[ext_resource type="PackedScene" uid="uid://6qxmijmlobbm" path="res://addons/vn_engine/scenes/dialog_handler.tscn" id="1_6kbri"]
 [ext_resource type="Script" path="res://addons/vn_engine/scenes/pick_choice_handler.gd" id="2_438c7"]
 
-[node name="PickChoiceHandler" instance=ExtResource("1_6kbri")]
+[node name="PickChoiceHandler" type="Node"]
 script = ExtResource("2_438c7")
